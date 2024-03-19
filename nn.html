@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Homepage</title>
+    <style>
+        /* Import Google Fonts */
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        /* General Styles */
+        *,
+       *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: pink;
+            animation: fadeIn 2s ease-in-out;
+        }
+
+        p {
+            color: white;
+        }
+
+        /* Keyframes */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+
+            100% {
+                opacity: 1;
+            }
+        }
+
+        /* Header Styles */
+        header {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 50px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-right: 20px;
+        }
+
+        nav ul li:last-child {
+            margin-right: 0;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #ff004f;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 40px;
+            background-color: #fff;
+            margin: 20px 0;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            animation: slideIn 1s ease-in-out;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.5s ease;
+        }
+
+        .section:hover {
+            transform: translateY(-10px);
+        }
+
+        @keyframes slideIn {
+            0% {
+                transform: translateY(50px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .service {
+            margin-bottom: 20px;
+        }
+
+        .service h3 {
+            margin-bottom: 10px;
+            font-size: 1.5rem;
+        }
+
+        .service p {
+            margin-bottom: 20px;
+        }
+
+        /* Footer Styles */
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: #fff;
+            text-align: center;
+            padding: 20px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Button Styles */
+        button,
+        button[type="submit"] {
+            background-color: #3498db;
+            color:black;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover,
+        button[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+		 #portfolio{
+            padding: 50px 0;
+        }
+        .work-list{
+            display: grid;
+            grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+            grid-gap: 40px;
+            margin-top: 50px;            
+        }
+        .work{
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        .work img{
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            transition:transform 0.5s;
+        }
+        .layer{
+            width: 100%;
+            height: 0;
+            background:linear-gradient(rgba(0,0,0,0.6),#ff004f);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            font-size: 14px;
+            transition:height 0.5s;
+        }
+        .layer h3{
+            font-weight: 500; 
+            margin-bottom: 20px; 
+        }
+        .layer a{
+            margin-top: 20px;
+            color: #ff004f;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+        }
+        .work:hover img{
+            transform: scale(1.1);
+        }
+        .work:hover .layer{
+            height: 100%;
+        }
+        .button{
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #ff004f;
+            padding: 14px 50px;
+            border-radius: 6px ;
+            text-decoration: none;
+            color: white;
+            transition: background 0.5s;
+        }
+        .button:hover{
+            background: #ff004f;
+        }
+		.button {
+    color: black; /* Set the color to black */
+}
+
+        /* Form Styles */
+        input,
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            transition: border-color 0.3s ease;
+        }
+
+        textarea {
+            height: 100px;
+        }
+
+       #about {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Styles for the left column */
+.left-col {
+    flex: 0 0 30%; /* Adjust the width as needed */
+}
+
+/* Styles for the right column */
+.right-col {
+    flex: 0 0 30%; /* Adjust the width as needed */
+}
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styles for the images */
+.image-container img {
+    max-width: 100%;
+    border-radius: 50%; /* Make the images circular */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect on images */
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+/* Styles for the image containers */
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Styles for the images */
+.image-container img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect on images */
+.image-container img:hover {
+    transform: scale(1.05);
+}
+.image-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.image-container img {
+    max-width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.image-container img:hover {
+    transform: scale(1.05);
+}
+
+
+    </style>
+    </style>
+
+       
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <img src="https://www.writediary.com/static/cherry/img/logo.png" alt="Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#services">About</a></li>
+                <li><a href="#about">Features</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="welcome" class="section" style="background-image: url('https://www.writediary.com/static/cherry/img/demoimg/slider1.png') background-size: cover; background-position: center;">
+
+    <h1>Welcome to Our Website!</h1>
+	<img src="C:\Users\admin\Downloads\pexels-george-milton-7034449.jpg" width="600" height="700" align="right" ></img>
+   <pre>
+   Journey digital diary app is basically a journal app that is available over various operating
+   systems or computes which include Android, iOS, Windows, Mac, Chromebook and Linux; 
+   and is also designed to securely
+   document your private memories and thoughts.Additionally, 
+   unlike the traditional diary or other online diary apps, 
+   you can include audio, video, and pictures to each journal entry.
+   Additionally, the Journey digital diary app allows you to add location information
+   and weather specific to the entries. 
+   You can also upload your entries to social media, thereby sharing precious moments with love
+   d ones and it’s a lot more fun if shared with people 
+   who contributed to those moments. In line with that, sharing your entries is made 
+   possible by a built-in markdown editor within the app.
+   For ages, kids and adults alike have been using paper diaries to track their feelings, moods,
+   thoughts, and more. Now is the age of the phone and technology and as such the traditional
+   diary has evolved. Now a diary is available at your fingertips in the form of an app.
+   </pre>
+   
+   <button id="learnMore">Learn More</button>
+</section>
+
+        <section id="services" class="section">
+
+            
+       
+		
+    <div id="portfolio">
+        <div class="container">
+            <h1 class="subtitle">About Us</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="C:\Users\admin\Pictures/uu.jpeg">
+                    <div class="layer">
+                        <h3>User Registration and Authentication and Journal Entry Creation:</h3>
+						<pre>Allow users to create accounts securely with email/password or social media login options.
+					Implement authentication mechanisms to ensure user privacy and data security.
+					Provide users with a user-friendly interface to create new journal entries.
+					Offer various entry formats such as text, images, videos, voice recordings, and mood tracking.</pre>
+                        
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="C:\Users\admin\Pictures/sc.jpeg">
+                    <div class="layer">
+                        <h3>Security and Privacy Controls and Syncing and Backup:</h3>
+						<pre>
+						Ensure data security and privacy by implementing encryption and secure storage practices.
+					Offer privacy settings to control who can view, comment on, or interact with journal entries. 
+					Enable synchronization across multiple devices to access journal entries from anywhere.
+					Provide automatic backup options to prevent data loss.</pre>
+                        
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="C:\Users\admin\Pictures/cs.png">
+                    <div class="layer">
+                        <h3>Entry Organization and Management and Customization and Personalization</h3>
+                        Enable users to organize entries by date, tags, categories, or custom folders.
+					Implement features for easy browsing, searching, and filtering of entries.  
+					Allow users to personalize their journal with customizable themes, fonts, and cover images.
+					Provide options to set reminders for regular journaling sessions.</pre>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="button">See More</a>
+        </div>
+    </div>
+	</section>
+        <section id="about" class="section">
+             <!--FEATURES CONTAINER-->
+        <section id="featureContainer" class="section-80-80 grayBgSection">
+
+            <h2 class="sectionTitle">Features</h2>
+            <div class="titleSeparator"></div>
+            <h3 class="sectionDescription">Learn more about in-app features</h3>
+            <div class="separator80"></div>
+            <div class="row">
+
+                <!--left side icons-->
+                <section id="about" class="section">
+    <!-- Logos on the left side -->
+    <div class="left-col">
+        <div class="image-container">
+            <img src="C:\Users\admin\Pictures/loc.jpeg" height="150" width="150" alt="Left Logo 1">
+        </div>
+		<div class="info-container">
+            <h3>Codelock Security</h3>
+            
+        </div>
+        <div class="image-container">
+            <img src="C:\Users\admin\Pictures/cl.jpeg" height="150" width="150" alt="Left Logo 2">
+        </div>
+		<div class="info-container">
+            <h3>Custom Colors</h3>
+            
+        </div>
+		 <div class="image-container">
+            <img src="C:\Users\admin\Pictures/sh.png" height="150" width="150" alt="Left Logo 3">
+        </div>
+		<div class="info-container">
+            <h3>Share with friends</h3>
+           
+        </div>
+        <div class="image-container">
+            <img src="C:\Users\admin\Pictures/w.png" height="150" width="150" alt="Left Logo 4">
+        </div>
+		<div class="info-container">
+            <h3>Write online and offline</h3>
+            
+        </div>
+        <!-- Add more logos as needed -->
+    </div>
+    
+    <!-- Center image -->
+    <div class="image-container">
+        <img src="C:\Users\admin\Pictures/PH.jpg" height="600" alt="Center Image" align="center">
+    </div>
+    
+    <!-- Logos on the right side -->
+    <div class="right-col">
+        <div class="image-container">
+            <img src="C:\Users\admin\Pictures/se.png" height="150" width="150" alt="Right Logo 1">
+			
+        </div>
+		<div class="info-container">
+            <h3>  Search</h3>
+            
+        </div>
+        <div class="image-container">
+            <img src="C:\Users\admin\Pictures/in.png" height="150" width="150" alt="Right Logo 2">
+        </div>
+		<div class="info-container">
+            <h3>  Write online</h3>
+            
+        </div>
+		<div class="image-container">
+            <img src="C:\Users\admin\Pictures/b.jpeg" height="150" width="150" alt="Right Logo 3">
+        </div>
+		<div class="info-container">
+            <h3>  Create Backup</h3>
+            
+        </div>
+        <div class="image-container">
+            <img src="C:\Users\admin\Pictures/re.jpeg" height="150" width="150" alt="Right Logo 4">
+        </div>
+		<div class="info-container">
+                 <h3>  Remainder</h3>
+            
+        </div>
+        <!-- Add more logos as needed -->
+    </div>
+</section>
+
+                <div class="clear"></div>
+            </div>
+            
+        </section>
+        <!--END FEATURES CONTAINER-->
+        </section>
+        <section id="contact" class="section">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Name" required>
+                <input type="email" placeholder="Email" required>
+                <textarea placeholder="Message" required></textarea>
+                <button type="submit">Send</button>
+            </form>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; The Dairy</p>
+    </footer>
+    <script>
+        document.getElementById("learnMore").addEventListener("click", function() {
+            window.scrollTo({
+                top: document.getElementById("services").offsetTop,
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+</html>

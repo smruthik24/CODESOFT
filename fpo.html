@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>My Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+		body{
+		background: url('https://i.postimg.cc/G4LTnjSf/background.jpg');
+		}
+
+        .main {
+            width: 100%;
+            background: url('https://i.postimg.cc/G4LTnjSf/background.jpg');
+            background-position: center;
+            background-size: cover;
+            height: 100vh;
+            position: relative;
+            font-family: sans-serif;
+        }
+
+        .navbar {
+            width: 86%;
+            display: flex;
+            margin: auto;
+            padding: 15px 0;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar .logo {
+            width: 160px;
+            cursor: pointer;
+            margin-top: -3%;
+            margin-left: -2%;
+        }
+
+        ul {
+            margin-top: -4%;
+        }
+
+        ul li {
+            list-style: none;
+            display: inline-block;
+            padding: 10px 16px;
+        }
+
+        ul li a {
+            font-size: 16px;
+            font-weight: bold;
+            text-decoration: none;
+            color: darkslategray;
+            margin-top: -3%;
+            transition: .4s ease;
+        }
+
+        ul li a:hover {
+            color: rgb(230, 104, 59);
+        }
+
+        .info {
+            margin-left: 7%;
+            margin-top: 6%;
+            color: black; /* Added to make text visible against dark background */
+        }
+
+        .info h1 {
+            font-size: 65px;
+            color: rgb(36, 32, 30);
+        }
+
+        .tab-titles {
+            display: flex;
+            margin: 20px 0 40px;
+        }
+
+        .tab-links {
+            margin-right: 50px;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .tab-links::after {
+            content: '';
+            width: 0;
+            height: 3px;
+            background-color: #ff004f;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+
+        .tab-links.active-link::after {
+            width: 50%;
+        }
+
+        .tab-contents ul li {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .tab-contents ul li span {
+            font-size: 14px;
+            color: #b72251;
+        }
+
+        .tab-contents {
+            display: none;
+        }
+
+        .tab-contents.active-tab {
+            display: block;
+        }
+
+        #portfolio {
+            padding: 50px 0;
+        }
+
+        .work-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            grid-gap: 40px;
+            margin-top: 50px;
+        }
+
+        .work {
+            border-radius: 10px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .work img {
+            width: 100%;
+            border-radius: 10px;
+            display: block;
+            transition: transform 0.5s;
+        }
+
+        .layer {
+            width: 100%;
+            height: 0;
+            background: linear-gradient(rgba(0, 0, 0, 0.6), #ff004f);
+            border-radius: 10px;
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            font-size: 14px;
+            transition: height 0.5s;
+        }
+
+        .layer h3 {
+            font-weight: 500;
+            margin-bottom: 20px;
+        }
+
+        .layer a {
+            margin-top: 20px;
+            color: #ff004f;
+            text-decoration: none;
+            font-size: 18px;
+            line-height: 60px;
+            background: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            text-align: center;
+        }
+
+        .work:hover img {
+            transform: scale(1.1);
+        }
+
+        .work:hover .layer {
+            height: 100%;
+        }
+
+        .button {
+            display: block;
+            margin: 50px auto;
+            width: fit-content;
+            border: 1px solid #ff004f;
+            padding: 14px 50px;
+            border-radius: 6px;
+            text-decoration: none;
+            color: white;
+            transition: background 0.5s;
+        }
+
+        .button:hover {
+            background: #ff004f;
+        }
+
+        .info h3 {
+            font-size: 18px;
+            letter-spacing: 1px;
+            line-height: 24px;
+        }
+
+        .info span {
+            color: rgb(230, 104, 59);
+        }
+
+        .info a {
+            text-decoration: none;
+            color: #fff;
+            background: rgb(36, 32, 30);
+            margin: 26px 0;
+            padding: 10px 18px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .info a:hover {
+            background: rgb(59, 174, 209);
+        }
+
+        .image {
+            width: 30%;
+            height: 60%;
+            position: absolute;
+            right: 100px;
+            bottom: 0;
+        }
+
+        .image img {
+            position: absolute;
+            height: 140%;
+            left: 40%;
+            transform: translateX(-55%);
+            bottom: 0;
+            transition: left 2s ease;
+        }
+
+        .image:hover .girl {
+            left: 55%;
+        }
+
+        .icons a {
+            text-decoration: none;
+        }
+
+        .icons ion-icon {
+            margin-left: 7%;
+            color: #000;
+            margin-right: -60px;
+            font-size: 40px;
+            transition: .4s ease;
+        }
+
+        .icons ion-icon:hover {
+            color: rgb(59, 174, 209);
+        }
+		 .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .skill {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px 20px;
+            margin: 10px;
+            border-radius: 20px;
+            transition: background-color 0.3s, transform 0.3s;
+            cursor: pointer;
+        }
+
+        .skill:hover {
+            background-color: rgba(255, 255, 255, 0.2);
+            color: #ff004f;
+            transform: scale(1.1);
+        }
+		 /---------------ABOUT ME--------------/
+        #about{
+            padding: 80px 0;
+            color:black;
+        }
+        .row{
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .about-col-1{
+            width: 30%;
+        }
+        .about-col-1 img{
+            width: 100%;
+            border-radius: 15px;
+        }
+        .about-col-2{
+            width: 60%;
+        }
+        .subtitle{
+            color: black;
+            font-weight: 600;
+            font-size: 60px;
+        }
+        .tab-titles{
+            display: flex;
+            margin: 20px 0 40px;
+        }
+        .tab-links{
+            margin-right:50px ;
+            font-size: 18px;
+            font-weight: 500;
+            cursor: pointer;
+            position: relative;
+        } 
+        .tab-links::after{
+            content: '';
+            width:0;
+            height: 3px;
+            background-color:pink;
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            transition: 0.5s;
+        }
+        .tab-links.active-link::after{
+            width:50%;
+        }
+        .tab-contents ul li{
+            list-style: none;
+            margin: 10px 0;
+
+        }
+        .tab-contents ul li span{
+            font-size: 14px;
+            color:orange;
+        }
+        .tab-contents {
+            display: none;
+
+        }
+        .tab-contents.active-tab{
+            display: block;
+        }
+		.social-icons{
+            margin-top: 30px;
+            
+        }
+        .social-icons a{
+            text-decoration: none;
+            font-size: 30px;
+            margin-right: 15px;
+            color: #ababab;
+            display: inline-block;
+            transition: transfrom 0.5s; 
+        }
+        .social-icons a:hover{
+            color: #ff004f;
+            transform: translateY(-5px);
+        }
+		.icons ion-icon:hover{
+
+color: rgb(59,174,209);
+
+}
+    </style>
+</head>
+
+<body>
+
+    <div class="main">
+
+        <div class="navbar">
+
+            <img src="C:\Users\admin\Pictures/loogo.jpeg" class="logo">
+
+            <ul>
+                <li><a href="#">HOME</a></li>
+                <li><a href="#about">ABOUT</a></li> <!-- Added link to the "About" section -->
+                <li><a href="#skills">SKILLS</a></li> <!-- Added link to the "Skills" section -->
+                <li><a href="#myworks">MY WORKS</a></li> <!-- Added link to the "My Works" section -->
+                <li><a href="#">CONTACT</a></li>
+            </ul>
+
+        </div>
+
+        <!-- About Section -->
+        <div class="info" id="about"> <!-- Added id for linking -->
+            <h3>Hi, I'm <span>Smruthi.</span></h3>
+            <h1><span>W</span>EB <span>D</span>ESIGNER</h1>
+            <h3>Web designer and developer from India,<br> I create websites to do businesses do </h3>
+            <a href="#">Hire me</a>
+        </div>
+
+        <!-- My Works Section -->
+        <div class="info" id="myworks"> <!-- Added id for linking -->
+           
+
+
+		   <h1 class="subtitle">My Work</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="C:\Users\admin\Pictures/sm.jpeg" width="300" height="400"></img>
+                    <div class="layer">
+                        <h3>Social Media App</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat qui id quisquam sequi, labore error accusantium non quam, alias aperiam modi corrupti fugit nemo nihil ad laboriosam totam quos voluptatibus!</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="C:\Users\admin\Pictures/dd.png">
+                    <div class="layer">
+                        <h3>Diary App</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat qui id quisquam sequi, labore error accusantium non quam, alias aperiam modi corrupti fugit nemo nihil ad laboriosam totam quos voluptatibus!</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+                <div class="work">
+                    <img src="C:\Users\admin\Pictures/tt.jpeg">
+                    <div class="layer">
+                        <h3>Travel journal App</h3>
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat qui id quisquam sequi, labore error accusantium non quam, alias aperiam modi corrupti fugit nemo nihil ad laboriosam totam quos voluptatibus!</p>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+            </div>
+            <a href="#" class="button">See More</a>
+        </div>
+
+        <!-- Skills Section -->
+        <div class="info" id="skills">
+<h1>SKILLS</h1>
+            <div class="skills-list">
+                <div class="skill">App Development</div>
+                <div class="skill">Web Development</div>
+                <div class="skill">Data Analysis</div>
+            </div>
+        </div>
+		<div class="about-col-2">
+                    <h1 class="subtitle">About Me</h1>
+                    <pre>
+I am a loyal and trustworthy employee who can work alone or as part of a team.
+I am a quick to learn and willing to adapt to any job. I am a competent, loyal, hard working employee with the ability to achieve tasks when working alone or as part of a team. 
+I am punctual with an excellent attendance record.</pre>
+                    <div class="tab-titles">
+                       
+                        <p class="tab-links" onclick="opentab('experience')">Experience</p> 
+                        <p class="tab-links"onclick="opentab('education')">Education</p>
+                    </div>
+                   
+                    <div class="tab-contents" id="experience" align="center">
+                        <ul>
+                            <li><span>2024-Current</span><br>Web Developer at EY GDS</li>
+                            <li><span>2022-2024</span><br>Android Developer at CodeSoft</li>
+                            <li><span>2020-2022</span><br>Internship at E-Kart Commerce</li>
+
+                        </ul>
+                    </div>
+                    <div class="tab-contents" id="education" align="center">
+                        <ul>
+                            <li><span>2022-2026</span><br>B.Tech from SRM University, AP</li>
+                            <li><span>2020-2022</span><br>Secondary Education from Narayana</li>
+                            <li><span>2019-2020</span><br>Primary Education from LRGV</li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+        <div class="image">
+            <img src="C:\Users\admin\Pictures/l.jpeg" width="600" height="300" class="girl">
+        </div>
+
+        <div class="icons">
+            <a href="#"><ion-icon name="logo-facebook"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-instagram"></ion-icon></a>
+            <a href="#"><ion-icon name="logo-twitter"></ion-icon></a>
+        </div>
+
+    </div>
+
+    <script src="https://unpkg.com/ionicons@5.4.0/dist/ionicons.js"></script>
+    <script>
+        var tablinks = document.getElementsByClassName("tab-links");
+        var tabcontents = document.getElementsByClassName("tab-contents");
+
+        function opentab(tabname) {
+            for (tablink of tablinks) {
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents) {
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+        }
+    </script>
+</body>
+
+</html>
